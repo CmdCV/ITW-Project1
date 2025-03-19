@@ -1,0 +1,1165 @@
+/*
+ * Login: xurbana00
+ *
+ * Doplnte sve reseni.
+ *
+ * Nezapomente pridat strucne hromadne komentare pro pravidla jednotlivych sekci
+ * a pro netrivialni useky kodu.
+ *
+ * Snazte se dodat aspon castecne reseni, i snaha se hodnoti.
+ */
+@font-face {
+    font-family: "Textile";
+    src: url("../fonts/textile.ttf") format("truetype");
+}
+
+@keyframes slideInFromBottom {
+    0% {
+        transform: translateY(80vh);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInHeyoooo {
+    0% {
+        top: 80px;
+        opacity: 0;
+    }
+
+    100% {
+        top: 40px;
+        opacity: 1;
+    }
+}
+
+/* Blok s deklarací proměnných */
+:root {
+    --primary-color: 0, 128, 0;
+    --primary-color-lighter: 144, 238, 144;
+    --primary-color-light: 204, 230, 194;
+    --secondary-color: 255, 182, 193;
+    --secondary-color-lighter: 247, 206, 211;
+    --grey: 51, 51, 51;
+    --opacity: 0.9;
+}
+
+/* Nastavení defaultích vlastností */
+* {
+    font-family: "Spectral";
+    font-size: 16px;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Nastavení základního vzhledu odkazů */
+a {
+    text-decoration: none;
+    color: rgb(var(--grey));
+    font-family: "Calistoga";
+    font-weight: bolder;
+}
+
+h2 {
+    font-family: Calistoga;
+}
+
+/* Nastavení hlavního pozadí stránky */
+body {
+    margin: 0;
+    background: url(../img/bg/bg-body.svg) repeat;
+}
+
+/* Nastavení vlastností .name podle zadání */
+.name {
+    font-family: "Calistoga";
+    font-size: 20px;
+}
+
+/* Padding kvůli pozicování hvězd, které jinak přesahují přes okraj elementu */
+.references {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Poskládá díky flex odkazy v listu za sebe + další vlastnosti */
+.references ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.references ul li {
+    position: relative; /* Relative kvůli pozicování hvězd */
+}
+
+/* Odstranění textu odkazů */
+.references ul li a {
+    font-size: 0;
+    display: inline-block;
+    width: 1em;
+}
+
+/* Přidání a pozicování hvězd */
+.references ul li a::before {
+    /* Pozicování hvězd na střed elementu (Spíš elementu na střed hvězdy) */
+    position: absolute;
+    top: 3px;
+    left: -9px;
+    font-size: 20px;
+    color: rgb(var(--primary-color));
+    content: "\f005"; /* Kód znaku hvězdy v FA6 */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900; /* Aby byly hvězdy plné */
+    font-size: initial;
+}
+
+/* ------------------ Header ------------------ */
+/* Prohození #header-title a #eader-menu */
+header {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+header #header-title {
+    /* Naháže spany pod sebe */
+    display: flex;
+    flex-direction: column;
+    /* Vycentruje spany */
+    align-items: center;
+    justify-content: center;
+    /* Výška 80% viewportu + nastavení pozadí */
+    height: 80vh; /* Odhad podle oka :D */
+    background: url(../img/bg/bg-header.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* Nastavení základních parametrá nadpisu */
+#header-title span {
+    color: white;
+    font-family: "Calistoga";
+    text-transform: uppercase; /* Velká písmena */
+    text-shadow: 0 0 40px rgb(var(--primary-color)); /* Záře okolo písma */
+}
+/* Nastavení animace pro jednotlivé spany pro dosažení efektu zpoždění bez probliku*/
+#header-title span:nth-child(1) {
+    animation: slideInFromBottom 1s ease-in-out;
+}
+#header-title span:nth-child(2) {
+    position: relative; /* Kvůli pozicování vlajek */
+    animation: slideInFromBottom 1.15s ease-in-out;
+}
+#header-title span:nth-child(3) {
+    animation: slideInFromBottom 1.3s ease-in-out;
+}
+#header-title span:nth-child(4) {
+    animation: slideInFromBottom 1.45s ease-in-out;
+}
+/* skrytý text prři zescrollování */
+html.scrolled #header-title span {
+    display: none;
+}
+
+#header-title span:nth-child(1) {
+    font-size: 120px;
+    line-height: 120px;
+}
+#header-title span:nth-child(2) {
+    font-size: 65px;
+    line-height: 65px;
+}
+
+/* Pozicování a velikost vlajek */
+#header-title span:nth-child(2)::before {
+    content: url("../img/custom/flag.svg");
+    transform: scale(0.3);
+    position: absolute;
+    top: -120px;
+    right: 225px;
+}
+#header-title span:nth-child(2)::after {
+    content: url("../img/custom/flag.svg");
+    transform: scaleX(-1) scale(0.3); /* scaleX(-1) Zrcadlí vlajku */
+    position: absolute;
+    top: -120px;
+    left: 225px;
+}
+
+#header-title span:nth-child(3) {
+    font-size: 20px;
+    line-height: 20px;
+}
+
+#header-title span:nth-child(4) {
+    font-family: "Textile";
+    text-transform: none;
+    font-size: 37px;
+    line-height: 70px;
+}
+
+#header-title span:nth-child(4)::before {
+    content: '"';
+}
+#header-title span:nth-child(4)::after {
+    content: '"';
+}
+
+#header-menu {
+    padding-top: 240px;
+    width: calc(
+            100vw - 4px
+    ); /* Border rozšiřuje element, takže ho bylo třeba odečíst, protože při zmenšení vw způsoboval side-scroll */
+}
+
+#header-menu::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -5em;
+    width: 100vw;
+    height: 18em;
+    background: url("../img/custom/beers.png") no-repeat center center;
+    background-size: cover;
+    transform: translateX(-50%);
+    z-index: 50;
+}
+
+nav {
+    position: relative;
+    text-transform: uppercase;
+    margin: auto;
+    padding: 0 20px;
+    max-width: 900px; /* Odhad od oka :D */
+    border-top: 2px dashed rgb(var(--primary-color));
+    border-bottom: 2px dashed rgb(var(--primary-color));
+}
+
+#header-menu ul {
+    display: grid;
+    grid-template-columns: repeat(
+    7,
+    1fr
+  ); /* 7 aby byla jedna volná pro kiti :D a vše bylo rovnoměrně rozložené*/
+    list-style-type: none;
+    padding: 0;
+}
+
+#header-menu ul li {
+    display: flex;
+    justify-content: center;
+}
+
+#header-menu ul li a:hover {
+    color: rgb(var(--primary-color));
+}
+
+#header-menu ul li:nth-child(3)::after {
+    position: absolute;
+    bottom: -40px;
+    right: 50%;
+    content: url("../img/custom/leaf.svg");
+    transform: scaleY(-1) scale(0.5) rotate(90deg) translate(0, -50%); /* Zrcadlení | Zmenšení | Otočení | Posun pozicování */
+    display: inline-block;
+}
+
+/* Přeskočení 4. buňky */
+#header-menu ul li:nth-child(4) {
+    grid-column-start: 5;
+}
+
+/* X ------------------ X Header X ------------------ X */
+/* ------------------ Main ------------------ */
+section {
+    position: relative;
+    padding-top: 100px;
+    padding-bottom: 160px;
+}
+
+#header-menu, /* Vždyť to je tak na půl souzčástí mainu :D */
+section:nth-child(odd),
+footer .section-content {
+    position: relative;
+    max-width: 1200px;
+    margin: auto;
+    background-color: white;
+    border-left: 2px dashed rgb(var(--primary-color));
+    border-right: 2px dashed rgb(var(--primary-color));
+}
+section:nth-child(even) .section-content {
+    max-width: 1200px;
+    margin: auto;
+}
+
+section .heading {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+section .heading h2 {
+    text-align: center;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin: 5px;
+}
+
+section .heading span {
+    font-family: "Textile";
+    text-align: center;
+    width: 100%;
+    font-size: 24px;
+}
+
+section:nth-child(odd) .heading {
+    color: rgb(var(--primary-color));
+}
+
+section:nth-child(odd) .heading span {
+    color: rgb(var(--grey));
+}
+
+section:nth-child(even) .heading {
+    color: rgb(var(--primary-color-lighter));
+}
+
+section:nth-child(even) .heading span {
+    color: white;
+}
+
+section .section-content {
+    margin-top: 25px;
+    padding: 10px;
+}
+
+section:nth-child(even):after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -4em;
+    width: 100vw;
+    height: 8em;
+    background: url("../img/custom/hr.svg") no-repeat center center;
+    background-size: cover;
+    transform: translateX(-50%);
+    z-index: 50;
+}
+
+section:nth-child(even):before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -4em;
+    width: 100vw;
+    height: 8em;
+    background: url("../img/custom/hr.svg") no-repeat center center;
+    background-size: cover;
+    transform: translateX(-50%);
+    z-index: 50;
+}
+
+/* ------------------ About ------------------ */
+#about::before {
+    position: absolute;
+    right: 100px;
+    top: 0;
+    transform: rotate(-45deg);
+    content: "";
+    background-image: url("../img/custom/sprites.svg");
+    background-repeat: no-repeat;
+    background-position: calc(600px / 4 * 0) 0; /* Výběr nápoje */
+    width: calc(600px / 4);
+    height: 320px;
+}
+
+#about::after {
+    z-index: 1;
+    position: absolute;
+    left: 40px;
+    bottom: 70px;
+    transform: rotate(-45deg);
+    content: "";
+    background-image: url("../img/custom/sprites.svg");
+    background-repeat: no-repeat;
+    background-position: calc(600px / 4 * -3) 0; /* Výběr nápoje */
+    width: calc(600px / 4);
+    height: 320px;
+}
+
+#about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button.mute::before,
+button.playpause::before,
+button.fullscreen::before,
+.video-player[data-state="paused"]::before {
+    padding: 5px;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 20px;
+    color: rgb(var(--primary-color));
+    text-shadow: 0 0 10px white;
+}
+
+.video-player[data-state="paused"]::before {
+    content: "\f04b";
+    font-size: 70px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.video-player.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-content:not(.fullscreen) {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-player {
+    overflow: hidden;
+    position: relative;
+    width: 60%;
+    aspect-ratio: 16/9;
+    z-index: 100;
+}
+
+.video-player.fullscreen .video-content video {
+    height: 100%;
+}
+
+.video-player:not(.fullscreen) .video-content video {
+    width: 100%;
+}
+
+.video-controls {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: grid;
+    grid-template-areas:
+    "playpause volume time fullscreen"
+    "timeline timeline timeline timeline";
+    grid-template-columns: auto auto auto 1fr;
+}
+
+.video-controls button {
+    /* skryje text tlačítek a udělá je průhledné */
+    font-size: 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+button.playpause {
+    grid-area: playpause;
+}
+
+button.playpause::before {
+    content: "\f04b";
+}
+
+.video-player[data-state="played"] button.playpause::before {
+    content: "\f04c";
+}
+
+.progress {
+    grid-area: timeline;
+    width: 100%;
+    height: 10px;
+    background-color: white;
+    opacity: 0.5;
+    margin-top: 5px;
+}
+
+.video-player.fullscreen .progress {
+    margin-bottom: 10px;
+}
+
+button.mute {
+    grid-area: volume;
+}
+
+button.mute::before {
+    content: "\f028";
+}
+
+.video-player[data-mute="muted"] button.mute::before {
+    content: "\f6a9";
+}
+
+button.fullscreen {
+    justify-self: end;
+    grid-area: fullscreen;
+}
+
+button.fullscreen::before {
+    content: "\f065";
+}
+
+.video-player.fullscreen button.fullscreen::before {
+    content: "\f066";
+}
+
+.time {
+    grid-area: time;
+    color: rgb(var(--primary-color));
+    text-shadow: 0 0 10px white;
+}
+
+.time[data-type="remained"]::before {
+    content: "-";
+}
+
+.video-popup {
+    border: solid 1px rgb(var(--primary-color));
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 0 10px 5px white;
+    color: rgb(var(--primary-color));
+    padding: 5px;
+    opacity: var(--opacity);
+}
+
+#about .name,
+#about .references {
+    width: 60%; /* Opět odhad od oka :D */
+    text-align: end;
+    box-sizing: border-box;
+}
+
+#about .references ul {
+    justify-content: flex-end;
+}
+
+/* X ------------------ X About X ------------------ X */
+
+/* ------------------ Team ------------------ */
+#team {
+    width: 100%;
+    background: url(../img/bg/bg-team.jpg) repeat-y center center / 100% auto;
+}
+
+#team .section-content {
+    display: grid;
+    grid-template-columns: repeat(
+    auto-fill,
+    minmax(250px, 1fr)
+  ); /* Minimální šířka sloupce 250px a maximálně 1fr */
+}
+
+#team .section-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 5px;
+    background-color: white;
+    opacity: var(--opacity);
+}
+
+#team .section-item img {
+    order: 1;
+    height: 300px;
+    margin: 5px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
+    opacity: var(--opacity);
+}
+
+#team .section-item:hover img {
+    opacity: 1;
+}
+
+#team .section-item h3 {
+    text-align: center;
+    font-weight: bolder;
+    font-family: "Calistoga";
+    font-size: 18px;
+    line-height: 18px;
+    order: 2;
+}
+
+#team .section-item .references {
+    order: 3;
+}
+
+#team .section-item .references ul {
+    justify-content: center;
+}
+
+#team .section-item p {
+    text-align: center;
+    order: 4;
+}
+
+#team .section-item:nth-child(even):hover {
+    background-color: rgb(var(--secondary-color-lighter));
+}
+
+#team .section-item:nth-child(odd):hover {
+    background-color: rgb(var(--primary-color-lighter));
+}
+
+#team .section-item:hover img {
+    height: 310px;
+    margin: 0;
+}
+
+/* X ------------------ X Team X ------------------ X */
+
+/* ------------------ Events ------------------ */
+#events::before {
+    position: absolute;
+    right: 90px;
+    top: 0;
+    transform: rotate(-45deg);
+    content: "";
+    background-image: url("../img/custom/sprites.svg");
+    background-repeat: no-repeat;
+    background-position: calc(600px / 4 * -2) 0; /* Výběr nápoje */
+    width: calc(600px / 4);
+    height: 320px;
+}
+
+#events::after {
+    z-index: 1;
+    position: absolute;
+    right: 90px;
+    bottom: 70px;
+    transform: rotate(45deg);
+    content: "";
+    background-image: url("../img/custom/sprites.svg");
+    background-repeat: no-repeat;
+    background-position: calc(600px / 4 * -1) 0; /* Výběr nápoje */
+    width: calc(600px / 4);
+    height: 320px;
+}
+
+#events .section-content {
+    position: relative;
+    z-index: 2;
+}
+
+#events .section-content .section-item {
+    padding: 20px 0;
+    overflow: auto;
+}
+
+#events .section-content .section-item:nth-child(even) {
+    border-top: dotted 1px rgb(var(--grey));
+    border-bottom: dotted 1px rgb(var(--grey));
+}
+
+#events .section-content .section-item img {
+    opacity: var(--opacity);
+    width: 40%;
+    float: left;
+    margin-right: 20px;
+}
+
+#events .section-content .section-item:nth-child(even) img {
+    float: right;
+    margin-right: 0;
+    margin-left: 20px;
+}
+
+#events .section-content .section-item:hover img {
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+#events .section-content .section-item h3 {
+    font-family: "Calistoga";
+    font-size: 20px;
+    font-weight: bolder;
+    margin: 0;
+}
+
+#events .section-content .section-item:nth-child(even) h3 {
+    text-align: right;
+}
+
+#events .section-content .section-item:hover h3 {
+    color: rgb(var(--primary-color));
+}
+
+#events .section-content .section-item .events-props {
+    display: flex;
+}
+
+#events .section-content .section-item:nth-child(even) .events-props {
+    justify-content: flex-end;
+}
+
+#events .section-content .section-item p {
+    margin: 0;
+    text-align: justify;
+}
+
+/* X ------------------ X Events X ------------------ X */
+
+/* ------------------ Menu ------------------ */
+#menu {
+    width: 100%;
+    background: url(../img/bg/bg-menu.jpg) repeat-y center center / 100% auto;
+}
+
+#menu .section-content {
+    display: grid;
+    aspect-ratio: 1/1;
+    grid-template-columns: repeat(4, 25%);
+    grid-template-rows: repeat(4, 25%);
+    grid-template-areas:
+    "a a e f"
+    "c b e f"
+    "c b g g"
+    "d d g g";
+    padding: 0;
+    border: solid 20px white;
+}
+
+#menu .section-content .section-item {
+    display: flex;
+}
+
+#menu .section-content .section-item:hover {
+    padding: 5px;
+}
+
+#menu .section-content .section-item:nth-child(1) {
+    grid-area: a;
+    background-color: rgba(var(--primary-color-light), 0.9);
+}
+
+#menu .section-content .section-item:nth-child(4) {
+    grid-area: b;
+    flex-direction: column;
+    background-color: rgba(var(--secondary-color), 0.9);
+}
+
+#menu .section-content .section-item:nth-child(2) {
+    grid-area: c;
+    flex-direction: column-reverse;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+#menu .section-content .section-item:nth-child(6) {
+    grid-area: d;
+    flex-direction: row-reverse;
+    background-color: rgba(var(--primary-color-light), 0.9);
+}
+
+#menu .section-content .section-item:nth-child(5) {
+    grid-area: e;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+#menu .section-content .section-item:nth-child(7) {
+    grid-area: f;
+    flex-direction: column-reverse;
+    background-color: rgba(var(--secondary-color), 0.9);
+}
+
+#menu .section-content .section-item:nth-child(3) {
+    grid-area: g;
+    background-color: rgba(var(--primary-color-light), 0.9);
+}
+
+#menu .section-content .section-item .figures {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+#menu .section-content .section-item .figures::before {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    z-index: 50;
+}
+
+#menu .section-content .section-item:nth-child(1) .figures::before,
+#menu .section-content .section-item:nth-child(3) .figures::before {
+    top: 50%;
+    right: 0;
+    transform: translate(0, -50%);
+    border-top: 25px solid transparent;
+    border-right: 25px solid rgb(var(--primary-color-light));
+    border-bottom: 25px solid transparent;
+}
+
+#menu .section-content .section-item:nth-child(2) .figures::before,
+#menu .section-content .section-item:nth-child(7) .figures::before {
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+}
+#menu .section-content .section-item:nth-child(7) .figures::before {
+    border-top: 25px solid rgb(var(--secondary-color));
+}
+
+#menu .section-content .section-item:nth-child(4) .figures::before,
+#menu .section-content .section-item:nth-child(5) .figures::before {
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+}
+#menu .section-content .section-item:nth-child(4) .figures::before {
+    border-bottom: 25px solid rgb(var(--secondary-color));
+}
+#menu .section-content .section-item:nth-child(5) .figures::before {
+    border-bottom: 25px solid white;
+}
+
+#menu .section-content .section-item:nth-child(6) .figures::before {
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+    border-top: 25px solid transparent;
+    border-left: 25px solid rgb(var(--primary-color-light));
+    border-bottom: 25px solid transparent;
+}
+#menu .section-content .section-item:nth-child(2) .figures::before {
+    border-top: 25px solid white;
+}
+
+#menu .section-content .section-item .figures img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
+    opacity: var(--opacity);
+}
+
+#menu .section-content .section-item:hover .figures img {
+    opacity: 1;
+}
+
+#menu .section-content .section-item .description {
+    min-width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#menu .section-content .section-item .description h3 a {
+    font-size: 20px;
+    margin: 0;
+}
+
+#menu .section-content .section-item .description span {
+    font-size: 35px;
+}
+
+#menu .section-content .section-item .description span::before {
+    content: "$";
+}
+
+/* X ------------------ X Menu X ------------------ X */
+
+/* ------------------ Services ------------------ */
+#services .section-content {
+    position: relative;
+    display: flex;
+    background-color: black;
+    box-shadow: 0 0 10px 20px black;
+    margin: 70px 40px;
+}
+
+/* Přidání mlhy před tabulku */
+#services .section-content::before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Výška a šířka je nastavená tak aby pokryla tabulku i se stíny */
+    width: 107%;
+    height: 117%;
+    background-color: rgba(255, 255, 255, 0.5);
+    opacity: var(--opacity);
+    transition: opacity 0.2s ease-in-out;
+}
+
+#services .section-content:hover::before {
+    opacity: 0;
+}
+
+#services .section-content::after {
+    content: "";
+    width: 50%;
+    padding-bottom: calc(100% / 3);
+    background-image: url("../img/gang/heisenberg.jpg");
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#services .section-content a,
+#services .section-content table {
+    font-weight: lighter;
+    color: white;
+}
+
+#services .section-content table {
+    border-collapse: collapse; /* Sloučení ohraničení buněk pro odstranění mezery v tečkách */
+    width: 50%;
+}
+
+#services .section-content table tr:nth-child(1) {
+    display: none;
+}
+#services .section-content table tr td{
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+}
+#services .section-content table tr td:nth-child(odd)::after {
+    position: absolute;
+    padding-left: 1ch;
+    content: "..........................................................................................................................................";
+}
+#services .section-content table tr td:nth-child(even)::after {
+    position: absolute;
+    right: 4ch;
+    content: "..........................................................................................................................................";
+}
+#services .section-content table tr:last-child td:nth-child(even)::after {
+    right: 8ch;
+}
+#services .section-content table tr td:nth-child(even) {
+    text-align: end;
+}
+
+#services
+.section-content
+table
+tr:not(:last-child)
+td:nth-child(even)::before {
+    content: "$";
+}
+
+#services .section-content table tr td:nth-child(even) a {
+    font-family: "Spectral";
+    text-align: end;
+}
+
+/* X ------------------ X Services X ------------------ X */
+
+/* ------------------ Contact ------------------ */
+#contact {
+    width: 100%;
+    background: url(../img/bg/bg-contact.jpg) repeat-y center center / 100% auto;
+}
+
+#contact .section-content {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+    "a b"
+    "a c";
+}
+
+#contact .section-content img {
+    grid-area: a;
+    padding: 5px;
+    background-color: white;
+    opacity: var(--opacity);
+    height: 400px;
+}
+
+#contact .section-content blockquote {
+    grid-area: b;
+    padding: 25px;
+    margin: 0;
+    background-color: white;
+    opacity: var(--opacity);
+}
+
+#contact .section-content blockquote p {
+    margin-top: 0;
+}
+
+#contact .section-content blockquote p,
+#contact .section-content blockquote span {
+    font-size: 20px;
+    font-style: italic;
+}
+
+#contact .section-content .contact-form {
+    grid-area: c;
+    margin: 40px;
+    width: auto;
+}
+
+#contact .section-content .contact-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+#contact .section-content .contact-form form * {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: solid 5px rgba(255, 255, 255, 0.9);
+    border-radius: 0;
+}
+
+#contact .section-content .contact-form form *:valid {
+    opacity: var(--opacity);
+    background-color: rgb(var(--primary-color-light));
+}
+
+#contact .section-content .contact-form form *:invalid,
+#contact .section-content .contact-form form:not(:valid) input[type="submit"] {
+    opacity: var(--opacity);
+    background-color: rgb(var(--secondary-color));
+}
+
+#contact .section-content .contact-form form *:focus {
+    opacity: 1;
+}
+
+#contact .section-content .contact-form form:not(:valid) input[type="submit"] {
+    opacity: var(--opacity);
+    border: solid 5px rgb(var(--secondary-color));
+}
+
+#contact .section-content .contact-form form input[type="submit"] {
+    width: 25%;
+    margin: auto;
+}
+
+#contact .section-content .contact-form form input[type="submit"]:disabled {
+    color: black;
+    background-color: rgb(162, 162, 162);
+    border: solid 5px rgb(100, 100, 100);
+}
+
+#contact .section-content img:hover,
+#contact .section-content blockquote:hover ~ img {
+    height: 410px;
+    padding: 0;
+    opacity: 1;
+}
+
+#contact .section-content blockquote:hover {
+    opacity: 1;
+}
+
+#heyoooo {
+    width: 300px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 20px;
+    padding: 10px;
+    position: fixed;
+    top: 40px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 75;
+    box-shadow: 0 0 10px 5px rgb(var(--primary-color));
+    animation: slideInHeyoooo 1s ease-in-out;
+}
+
+#heyoooo a img {
+    transform: scale(0.8);
+}
+
+#heyoooo div {
+    display: flex;
+    flex-direction: column;
+}
+
+#heyoooo div span,
+#heyoooo div span b {
+    font-family: "Textile";
+}
+
+#heyoooo div span:first-child b {
+    font-size: 35px;
+    text-transform: uppercase;
+}
+
+#heyoooo div span:last-child {
+    color: rgb(var(--primary-color));
+}
+
+#heyoooo:not(.open) {
+    display: none;
+}
+
+/* X ------------------ X Contact X ------------------ X */
+/* X ------------------ X Main X ------------------ X */
+/* ------------------ Footer ------------------ */
+footer .section-content {
+    padding: 65px 20px;
+    display: flex;
+    justify-content: space-between;
+    background-image: url("../img/custom/gang.svg");
+    background-size: 25%;
+    background-position: center bottom 10px;
+    background-repeat: no-repeat;
+}
+
+footer .section-content span {
+    margin-top: 30px;
+    font-family: "Calistoga";
+    font-weight: bolder;
+}
+
+#sweatshop {
+    opacity: 0;
+}
+
+html.scrolled #sweatshop {
+    opacity: 1;
+    position: fixed;
+    right: 20px;
+    bottom: 10px;
+    padding: 15px 20px;
+    color: rgba(var(--primary-color), 0.9);
+    border: solid 2px rgba(var(--primary-color), 0.9);
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 75;
+}
+
+/* X ------------------ X Footer X ------------------ X */
