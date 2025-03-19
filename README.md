@@ -1,4 +1,4 @@
-# ITW - Web Design Project 2
+# ITW - Web Design Project 1
 
 ## Purpose
 This repository serves as a record of my projects throughout my studies at FIT BUT.
